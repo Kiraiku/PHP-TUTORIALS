@@ -13,6 +13,7 @@ include 'connect.php';
 $sql = "INSERT INTO `users`(`id`, `names`, `email`, `password`) VALUES (null,'$names','$email','$password')";
 
 mysqli_query($con, $sql) or die(mysqli_error($con));
+setcookie('message', 'The user  has been added successfully', time()+3);
 
 header("location:insert.php");
 }
@@ -35,6 +36,13 @@ header("location:insert.php");
 <div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-sm-5 shadow-sm">
+
+        <?php if (isset($_COOKIE['message'])): ?>
+            <div class="alert alert-primary">
+                <?= $_COOKIE['message'] ?>
+            </div>
+            <?php endif; ?>
+
             <form action="insert.php" method="POST">
 
             <div class="form-group">
