@@ -13,7 +13,7 @@ include 'connect.php';
 $sql = "INSERT INTO `users`(`id`, `names`, `email`, `password`) VALUES (null,'$names','$email','$password')";
 
 mysqli_query($con, $sql) or die(mysqli_error($con));
-setcookie('message', 'The user  has been added successfully', time()+3);
+setcookie('message', "The user $names has been added successfully", time()+3);
 
 header("location:insert.php");
 }
